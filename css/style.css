@@ -3,13 +3,11 @@
 :root {
   --orange: hsl(26, 100%, 55%);
   --pale-orange: hsl(25, 100%, 94%);
-
   --very-dark-blue: hsl(220, 13%, 13%);
   --dark-grayish-blue: hsl(219, 9%, 45%);
   --grayish-blue: hsl(220, 14%, 75%);
   --light-grayish-blue: hsl(223, 64%, 98%);
   --white: #fff;
-
   --font-family: 'Kumbh Sans', sans-serif;
   --font-size: 16px;
   --fw-regular: 400;
@@ -30,12 +28,12 @@ body {
 }
 
 .container {
-  width: 1240px;
+  max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* =================== Navbar =================== */
 header {
   background: var(--white);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -44,16 +42,16 @@ header {
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;    
-  right: 0;
-  width: 1300px;
-  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1300px;
+  width: 100%;
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--light-grayish-blue);
   padding: 20px 0;
   background: var(--white);
-  z-index: 10;
+  z-index: 100;
 }
 
 .navbar__logo {
@@ -122,7 +120,11 @@ header {
   height: 32px;
 }
 
-/* =================== Cart =================== */
+button:focus,
+a:focus {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
 
 .cart {
   position: absolute;
@@ -155,53 +157,6 @@ header {
   margin: 0 0 15px;
 }
 
-.cart__item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.cart__item-image {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-}
-
-.cart__item-image img {
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-}
-
-.cart__item-details {
-  flex-grow: 1;
-}
-
-.cart__item-name {
-  font-weight: var(--fw-bold);
-}
-
-.cart__item-price {
-  font-size: 0.9em;
-  color: var(--dark-grayish-blue);
-}
-
-.cart__item-remove {
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.cart__item-remove img {
-  width: 16px;
-  transition: 0.3s;
-}
-
-.cart__item-remove:hover img {
-  width: 22px;
-}
-
 .cart__checkout-btn {
   width: 100%;
   padding: 12px;
@@ -217,8 +172,6 @@ header {
   background: darkorange;
 }
 
-/* =================== Product =================== */
-
 .product {
   padding: 12rem 20px;
 }
@@ -226,7 +179,6 @@ header {
 .product__container {
   display: flex;
   gap: 10px;
-
 }
 
 .product__gallery {
@@ -248,7 +200,6 @@ header {
 }
 
 .product__thumb {
-  position: relative;
   width: 100px;
   aspect-ratio: 1 / 1;
   cursor: pointer;
@@ -280,8 +231,7 @@ header {
   font-weight: var(--fw-bold);
   font-size: 18px;
   letter-spacing: 1px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .product__title {
@@ -295,16 +245,12 @@ header {
   margin-bottom: 24px;
 }
 
-/* CSS FILE */
-
 .product__price {
   display: flex;
   gap: 15px;
   margin-bottom: 20px;
   align-items: flex-start;
-  /* Yoki flex-start, flex-end, baseline */
 }
-
 
 .product__price-current {
   display: flex;
@@ -322,19 +268,14 @@ header {
 }
 
 .product__price-discount {
-  display: block;
-  /* Span elementi inline bo'lgani uchun, blok qilib qo'yish kerak */
-  width: 50px;
-  aspect-ratio: 1 / 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--very-dark-blue);
   color: var(--white);
   font-weight: var(--fw-bold);
   padding: 5px 8px;
   border-radius: 4px;
-  /* Textni badge ichida markazga joylashtirish uchun */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .product__controls {
@@ -362,7 +303,6 @@ header {
 .product__quantity-value {
   padding: 12px 20px;
   font-size: 18px;
-  color: var(--very-dark-blue);
   font-weight: var(--fw-bold);
 }
 
@@ -383,8 +323,6 @@ header {
   opacity: 0.8;
 }
 
-/* =================== Lightbox =================== */
-
 .lightbox {
   position: fixed;
   top: 0;
@@ -392,35 +330,45 @@ header {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.9);
+  
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding-top: 20rem;
+  padding-bottom: 5rem;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
 }
 
-.lightbox__close {
-  position: relative;
-  top: 0;
-  right: -16%;
-  font-size: 40px;
-  color: var(--white);
-  cursor: pointer;
-}
+
+  .lightbox__close {
+    position: absolute;
+    top: 8%;
+    right: 30%;
+    font-size: 50px;
+    color: var(--white);
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
 
 .lightbox__content {
   position: relative;
-  max-width: 450px;
+  max-width:  500px;
   width: 100%;
-  height: 400px;
 }
 
 .lightbox__image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  aspect-ratio: 5/ 5;
   border-radius: 10px;
-  margin-bottom: 50px;
+  object-fit: cover;
 }
 
 .lightbox__prev,
@@ -452,7 +400,7 @@ header {
 }
 
 .lightbox__thumb {
-  width: 80px;
+  width: 5rem;
   cursor: pointer;
   opacity: 0.6;
   border: 2px solid transparent;
@@ -469,450 +417,133 @@ header {
 .mobile-slider__next {
   display: none;
 }
-/* =================== Media Queries =================== */
-/* Planshet va kichik ekranlar uchun (768px gacha) */
+
+/* =================== MEDIA =================== */
+
 @media (max-width: 768px) {
-  .container {
-    width: 90%;
-    padding: 0 10px;
+  .navbar__toggle {
+    display: block;
   }
-
-  .navbar {
-    width: 100%;
-    padding: 10px 20px;
-    flex-wrap: row;
-  }
-
   .navbar__nav {
     display: none;
-    gap: 10px;
+    position: absolute;
+    top: 60px; /* navbar balandligi */
+    left: 0;
     width: 100%;
-    background: white;
-    padding: 10px 20px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
 
   .navbar__nav.active {
     display: flex;
   }
-
   .navbar__list {
-    width: 100%;
-    height: 0;
-    overflow: hidden;
-    position: relative;
-    top: -100%;
-    left: 0;
-    right: 0;
-    display: flex;
+    flex: 1;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-top: 10px;
-    transition: all 0.4s ease-in-out;
-  }
-
-  .navbar__nav.active .navbar__list {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    height: auto;
-    background: var(--white);
-    transition: all 0.4s ease-in-out;
-
-  }
-  .navbar__nav.active .navbar{
-    position: fixed;
-    top: 0;
-    left: 0;      
-    right: 0;
-    z-index: 1000;
-    background: var(--white);
-    box-shadow: 0 2px 5px rgba(0, 0, 0.1);
-    padding: 10px 20px;
-    flex-direction: column;
-    align-items: flex-start;
-
-  }
-
-
-  .navbar__item {
-    margin: 10px 15px;
-  }
-
-  .navbar__link {
-    font-size: 16px;
-  }
-
-  .navbar__toggle {
-    order: -1;
-    /* Logoning oldiga chiqaradi */
-    margin-left: auto;
-    display: block;
-  }
-
-  .navbar__actions {
-    margin-left: 0;
-    margin-top: 10px;
-    width: 100%;
-    justify-content: flex-end;
-  }
-
-  .navbar__cart-btn,
-  .navbar__profile-btn {
-    margin-left: 10px;
-    width: 40px;
-    height: 40px;
-  }
-
-  .navbar__cart-btn img,
-  .navbar__profile-btn img {
-    width: 100%;
-    height: 100%;
-  }
-
-  .product__container {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .product__main-img {
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 15px;
-  }
-
-  .product__thumbnails {
-    justify-content: center;
-  }
-
-  .product__thumb {
-    width: 70px;
-    aspect-ratio: 1 / 1;
-  }
-
-  .product__details {
-    padding: 20px 10px;
-  }
-
-  .product__company {
-    font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .product__title {
-    font-size: 32px;
-    margin-bottom: 15px;
-  }
-
-  .product__description {
-    font-size: 14px;
-    margin-bottom: 18px;
-  }
-
-  .product__price-current {
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .product__price-discounted {
-    font-size: 20px;
-  }
-
-  .product__price-original {
-    font-size: 14px;
-  }
-
-  .product__price-discount {
-    width: 40px;
-    aspect-ratio: 1 / 0.5;
-    font-size: 14px;
-    padding: 4px 6px;
-    border-radius: 3px;
-  }
-
-  .product__controls {
-    flex-direction: column;
-    gap: 15px;
-    background-color: var(--light-grayish-blue);
-  }
-
-  .product__quantity {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 10px;
-  }
-  .product__quantity-decrement,
-  .product__quantity-increment {
-    font-size: 24px;
-    font-weight: var(--fw-bold);
-  }
-
-  .product__quantity-value {
-    padding: 8px 12px;
-    font-size: 18px;
-  }
-
-  .product__add-btn {
-    padding: 12px 20px;
-    font-size: 16px;
-  }
-
-  .cart {
-    top: calc(100% + 10px);
-    /* header tagidan pastda chiqadi */
-    right: 5%;
-  }
-
-  .lightbox__content {
-    max-width: 80vw;
-    height: auto;
-  }
-
-  .lightbox__image {
-    height: auto;
-    max-height: 60vh;
-    object-fit: cover;
-  }
-
-  .lightbox__thumb {
-    width: 130px;
-    aspect-ratio: 1 / 1;
-  }
-  .lightbox__prev,
-  .lightbox__next { 
-    width: 60px;
-    height: 60px;
-    font-size: 30px;
-    top: 45%;
-  }
-  .lightbox__prev {
-    left: -30px;
-  }
-  .lightbox__next {
-    right: -30px;
-  }
-  .lightbox__close {
-    right: -45%;
-    top: -10px;
-    font-size: 50px;
-  }
-    
-}
-
-/* Juda kichik ekranlar uchun — mobil (430px gacha) */
-@media (max-width: 430px) {
-  .container {
-    width: 95%;
-    padding: 0 8px;
-  }
-
-  .navbar {
-    padding: 25px 20px;
-    flex-direction:row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .navbar__list {
-    width: 100%;
-    margin: 10px 0 0 0;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .navbar__item {
-    margin: 8px 10px;
-  }
-
-  .navbar__link {
-    font-size: 14px;
-  }
-
-  .navbar__actions {
-    width: 100%;
-    margin-top: 0;
-    justify-content: flex-end;
-  }
-
-  .navbar__cart-btn,
-  .navbar__profile-btn {
-    margin-left: 10px;
-    width: 25px;
-    height: 25px;
-  }
-
-  .navbar__cart-btn img,
-  .navbar__profile-btn img {
-    width: 100%;
-    height: 100%;
-  }
-.product {
-    padding: 5rem 0px;
-  } 
-  .product__container {
-    flex-direction: column;
-    gap: 0px;
     margin: 0;
     padding: 0;
   }
-
-  .product__gallery {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    padding: 0;
+  .product__container {
+    flex-direction: column;
   }
   .product__main-img {
     width: 100%;
-    max-width: 100%;
-    aspect-ratio: 1 / 1;  
-    border-radius: 0;
   }
-
-  .product__thumbnails {
-    gap: 15px;
-  }
-
-  .product__thumb {
-    width: 60px;
-  }
-
   .product__details {
-    padding: 15px 20px;
+    padding: 20px;
   }
+  .cart {
+    width: 90%;
+    right: 5%;
+  }
+  .product__controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  .product__quantity {
+    width: 100%;
+  }
+  .product__quantity-decrement,
+  .product__quantity-increment {    
+    width: 50px;
+    height: 50px;
+     font-size: 24px;
+  }
+  .product__quantity-value {
+    flex: 1;
+    text-align: center;
+  }
+  .product__add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+.lightbox{
+  overflow-y: auto;
+}
+.lightbox__content {
+  max-width:  400px;
+}
 
+  .lightbox__close {
+    position: absolute;
+    top: 15%;
+    right: 20%;
+    font-size: 50px;
+    color: var(--white);
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .navbar {
+    padding: 15px;
+  }
+  .product {
+    padding: 5rem 10px;
+  }
+  .product__title {
+    font-size: 32px;
+    font-weight: var(--fw-bold);
+    text-align: left; 
+  }
   .product__company {
     font-size: 14px;
-    margin-top: 8px;
-    margin-bottom: 8px;
   }
-
-  .product__title {
-    font-size: 24px;
-    margin-bottom: 12px;
-  }
-
-  .product__description {
-    font-size: 13px;
-    margin-bottom: 14px;
-  }
-
   .product__price-discounted {
-    font-size: 18px;
+    font-size: 20px;
   }
-
-  .product__price-original {
-    font-size: 12px;
-  }
-
-  .product__price-discount {
-    width: 35px;
-    font-size: 12px;
-    padding: 3px 5px;
-    border-radius: 2px;
-  }
-
-  .product__quantity-decrement,
-  .product__quantity-increment {
-    padding: 6px;
-    font-size: 18px;
-  }
-
-  .product__quantity-value {
-    padding: 6px 10px;
-    font-size: 14px;
-  }
-
   .product__add-btn {
-    padding: 10px 15px;
-    font-size: 14px;
+    width: 100%;
+    justify-content: center;
   }
-
-  .cart {
-    width: 95vw;
-    right: 2.5vw;
-    top: 65px;
-  }
-      .product__thumbnails, .lightbox {
-    display: none !important; /* Umuman ko‘rinmasin */
+  .product__thumbnails {
+    display: none;
   }
   .mobile-slider__prev,
   .mobile-slider__next {
     display: block;
     position: absolute;
-    top: 35%;
+    top: 35%; 
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--white);
     border: none;
-    font-size: 24px;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    z-index: 10;
-  }
-
-  .mobile-slider__prev {
-    left: 15px;
-  }
-
-  .mobile-slider__next {
-    right: 15px;
-  }
-
-}
-@media (max-width: 414px) {
-  .product__details {
-    padding: 20px 25px;
-  }
-  .product__company {
-    font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .product__title {
-    font-size: 28px;
-    margin-bottom: 16px;
-  }
-  .product__description {
-    font-size: 14px;
-    margin-bottom: 16px;
-  }
-  .product__price-discounted {
-    font-size: 20px;
-  }
-  .product__price-original {
-    font-size: 14px;
-  }
-  .product__price-discount {
     width: 40px;
-    font-size: 14px;
-    padding: 4px 6px;
-    border-radius: 3px;
+    height: 40px; 
+    font-weight: var(--fw-bold);
+    cursor: pointer;
   }
-  .product__quantity-decrement,
-  .product__quantity-increment {
-    padding: 8px;
-    font-size: 20px;
-  }   
-  .product__quantity-value {
-  display: inline;
-    padding: 8px 12px;
-    font-size: 16px;
+  .mobile-slider__prev {
+    left: 10px;
   }
-  .product__add-btn {
-    padding: 12px 20px;
-    font-size: 16px;
-  }
-
-  .mobile-slider__prev,
   .mobile-slider__next {
-top: 25%;
+    right: 10px;
+  }
+  .lightbox {
+    display: none;
   }
 }
