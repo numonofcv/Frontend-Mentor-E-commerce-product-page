@@ -670,18 +670,39 @@ header {
   }
 
   .lightbox__content {
-    max-width: 90vw;
+    max-width: 80vw;
     height: auto;
   }
 
   .lightbox__image {
     height: auto;
     max-height: 60vh;
+    object-fit: cover;
   }
 
   .lightbox__thumb {
-    width: 60px;
+    width: 130px;
+    aspect-ratio: 1 / 1;
   }
+  .lightbox__prev,
+  .lightbox__next { 
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    top: 45%;
+  }
+  .lightbox__prev {
+    left: -30px;
+  }
+  .lightbox__next {
+    right: -30px;
+  }
+  .lightbox__close {
+    right: -45%;
+    top: -10px;
+    font-size: 50px;
+  }
+    
 }
 
 /* Juda kichik ekranlar uchun — mobil (430px gacha) */
