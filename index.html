@@ -1,131 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Mentor | E-commerce product page</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frontend Mentor | E-commerce product page</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
-  <link rel="stylesheet" href="./css/style.css" />
-</head>
-
-<body>
-  <header class="header">
-    <div class="navbar">
-      <button class="navbar__toggle" aria-label="Toggle menu">
-        <img src="./images/icon-menu.svg" alt="menu" />
-      </button>
-      <a href="#" class="navbar__logo-link">
-        <img class="navbar__logo" src="./images/logo.svg" alt="Site logo" />
-      </a>
-
-      <nav class="navbar__nav">
-        <ul class="navbar__list">
-          <li class="navbar__item">
-            <a class="navbar__link" href="#">Collections</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="#">Men</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="#">Women</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="#">About</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="#">Contact</a>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="navbar__actions">
-        <button class="navbar__cart-btn" aria-label="Shopping cart">
-          <img src="./images/icon-cart.svg" alt="Cart" />
+  <body>
+    <header class="header">
+      <div class="navbar">
+        <button class="navbar__toggle" aria-label="Toggle menu">
+          <img src="./images/icon-menu.svg" alt="menu" />
         </button>
-        <button class="navbar__profile-btn" aria-label="User profile">
-          <img src="./images/image-avatar.png" alt="User" />
+        <!-- Add type attribute to button -->
+        <button class="navbar__toggle" aria-label="Toggle menu" type="button">
         </button>
+        <a href="#" class="navbar__logo-link">
+          <img class="navbar__logo" src="./images/logo.svg" alt="Site logo" />
+        </a>
 
-      </div>
-      <div class="cart">
-        <h4 class="cart__title">Cart</h4>
-        <hr class="cart__divider" />
-        <ul class="cart__items"></ul>
-        <button class="cart__checkout-btn">Checkout</button>
-      </div>
+        <nav class="navbar__nav">
+          <ul class="navbar__list">
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">Collections</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">Men</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">Women</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">About</a>
+            </li>
+            <li class="navbar__item">
+              <a class="navbar__link" href="#">Contact</a>
+            </li>
+          </ul>
+        </nav>
 
-    </div>
-  </header>
-
-  <main>
-    <section class="product">
-      <div class="container product__container">
-        <div class="product__gallery">
-          <img src="./images/image-product-1.jpg" data-id="1" class="product__main-img" alt="Product" />
-
-
-          <button class="mobile-slider__prev" aria-label="Previous image">&#10094;</button>
-          <button class="mobile-slider__next" aria-label="Next image">&#10095;</button>
-
-          <div class="product__thumbnails">
-            <div class="product__thumb"><img src="./images/image-product-1-thumbnail.jpg" data-id="1" alt="Thumb 1" />
-            </div>
-            <div class="product__thumb"><img src="./images/image-product-2-thumbnail.jpg" data-id="2" alt="Thumb 2" />
-            </div>
-            <div class="product__thumb"><img src="./images/image-product-3-thumbnail.jpg" data-id="3" alt="Thumb 3" />
-            </div>
-            <div class="product__thumb"><img src="./images/image-product-4-thumbnail.jpg" data-id="4" alt="Thumb 4" />
-            </div>
-          </div>
+        <div class="navbar__actions">
+          <button class="navbar__cart-btn" aria-label="Shopping cart">
+            <img src="./images/icon-cart.svg" alt="Cart" />
+          </button>
+          <!-- Add type attribute to button -->
+          <button class="navbar__cart-btn" aria-label="Shopping cart" type="button">
+          </button>
+          <button class="navbar__profile-btn" aria-label="User profile">
+            <img src="./images/image-avatar.png" alt="User" />
+          </button>
+          <!-- Add type attribute to button -->
+          <button class="navbar__profile-btn" aria-label="User profile" type="button">
+          </button>
         </div>
-        <div class="product__details">
-          <span class="product__company">Sneaker Company</span>
-          <h1 class="product__title">Fall Limited Edition Sneakers</h1>
-          <p class="product__description">
-            These low-profile sneakers are your perfect casual wear companion. Featuring a
-            durable rubber outer sole, they'll withstand everything the weather can offer.
-          </p>
-          <div class="product__price">
-            <div class="product__price-current">
-              <span class="product__price-discounted">$125.00</span>
-              <span class="product__price-original">$250.00</span>
-            </div>
-            <span class="product__price-discount">50%</span>
-          </div>
-          <div class="product__controls">
-            <div class="product__quantity">
-              <button class="product__quantity-decrement">-</button>
-              <span class="product__quantity-value">0</span>
-              <button class="product__quantity-increment">+</button>
-            </div>
-            <button class="product__add-btn">
-              <img src="./images/icon-cart.svg" alt="Add to cart" />
-              <span>Add to cart</span>
+        <div class="cart">
+          <h4 class="cart__title">Cart</h4>
+          <hr class="cart__divider" />
+          <ul class="cart__items"></ul>
+          <button class="cart__checkout-btn" type="button">Checkout</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="product">
+        <div class="container product__container">
+          <div class="product__gallery">
+            <img
+              src="./images/image-product-1.jpg"
+              data-id="1"
+              class="product__main-img"
+              alt="Product"
+            />
+
+            <button class="mobile-slider__prev" aria-label="Previous image">
+              &#10094;
             </button>
+            <!-- Add type attribute to button -->
+            <button class="mobile-slider__prev" aria-label="Previous image" type="button">
+              &#10094;
+            <button class="mobile-slider__next" aria-label="Next image">
+              &#10095;
+            </button>
+            <!-- Add type attribute to button -->
+            <button class="mobile-slider__next" aria-label="Next image" type="button">
+              &#10095;
+
+            <div class="product__thumbnails">
+              <div class="product__thumb">
+                <img
+                  src="./images/image-product-1-thumbnail.jpg"
+                  data-id="1"
+                  alt="Thumb 1"
+                />
+              </div>
+              <div class="product__thumb">
+                <img
+                  src="./images/image-product-2-thumbnail.jpg"
+                  data-id="2"
+                  alt="Thumb 2"
+                />
+              </div>
+              <div class="product__thumb">
+                <img
+                  src="./images/image-product-3-thumbnail.jpg"
+                  data-id="3"
+                  alt="Thumb 3"
+                />
+              </div>
+              <div class="product__thumb">
+                <img
+                  src="./images/image-product-4-thumbnail.jpg"
+                  data-id="4"
+                  alt="Thumb 4"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="product__details">
+            <span class="product__company">Sneaker Company</span>
+            <h1 class="product__title">Fall Limited Edition Sneakers</h1>
+            <p class="product__description">
+              These low-profile sneakers are your perfect casual wear companion.
+              Featuring a durable rubber outer sole, they'll withstand
+              everything the weather can offer.
+            </p>
+            <div class="product__price">
+              <div class="product__price-current">
+                <span class="product__price-discounted">$125.00</span>
+                <span class="product__price-original">$250.00</span>
+              </div>
+              <span class="product__price-discount">50%</span>
+            </div>
+            <div class="product__controls">
+              <div class="product__quantity">
+                <button class="product__quantity-decrement" type="button">-</button>
+                <span class="product__quantity-value">0</span>
+                <button class="product__quantity-increment" type="button">+</button>
+              </div>
+              <button class="product__add-btn">
+                <img src="./images/icon-cart.svg" alt="" />
+                <span>Add to cart</span>
+              </button>
+              <!-- Add type attribute to button -->
+              <button class="product__add-btn" type="button">
+                <img src="./images/icon-cart.svg" alt="" />
+                <span>Add to cart</span>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-      <span class="lightbox__close" id="lightboxClose">&times;</span>
-      <div class="lightbox__content">
-        <button class="lightbox__prev" id="lightboxPrev">&#10094;</button>
-        <img class="lightbox__image" id="lightboxImage" src="" alt="Lightbox image" />
-        <button class="lightbox__next" id="lightboxNext">&#10095;</button>
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox">
+        <button class="lightbox__close" id="lightboxClose" type="button">&times;</button>
+        <div class="lightbox__content">
+          <button class="lightbox__prev" id="lightboxPrev" type="button">&#10094;</button>
+          <img
+            class="lightbox__image"
+            id="lightboxImage"
+            src="./images/image-product-1.jpg"
+            alt="Lightbox image"
+          />
+          <button class="lightbox__next" id="lightboxNext" type="button">&#10095;</button>
+        </div>
+        <div class="lightbox__thumbnails">
+          <img
+            class="lightbox__thumb"
+            src="./images/image-product-1-thumbnail.jpg"
+            data-index="0"
+            alt="Thumb 1"
+          />
+          <img
+            class="lightbox__thumb"
+            src="./images/image-product-2-thumbnail.jpg"
+            data-index="1"
+            alt="Thumb 2"
+          />
+          <img
+            class="lightbox__thumb"
+            src="./images/image-product-3-thumbnail.jpg"
+            data-index="2"
+            alt="Thumb 3"
+          />
+          <img
+            class="lightbox__thumb"
+            src="./images/image-product-4-thumbnail.jpg"
+            data-index="3"
+            alt="Thumb 4"
+          />
+        </div>
       </div>
-      <div class="lightbox__thumbnails">
-        <img class="lightbox__thumb" src="./images/image-product-1-thumbnail.jpg" data-index="0" alt="Thumb 1" />
-        <img class="lightbox__thumb" src="./images/image-product-2-thumbnail.jpg" data-index="1" alt="Thumb 2" />
-        <img class="lightbox__thumb" src="./images/image-product-3-thumbnail.jpg" data-index="2" alt="Thumb 3" />
-        <img class="lightbox__thumb" src="./images/image-product-4-thumbnail.jpg" data-index="3" alt="Thumb 4" />
-      </div>
-    </div>
-  </main>
+    </main>
 
-  <script src="./js/script.js"></script>
-</body>
-
+    <script src="./js/script.js"></script>
+  </body>
 </html>
